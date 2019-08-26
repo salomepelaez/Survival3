@@ -15,7 +15,7 @@ namespace NPC
             {
                 zombieData.taste = (MyTaste)Random.Range(0, 5); // Al igual que en la clase "Villagers", la variable Random se utilizó en el Start para asignarla una vez por objeto.  
                 Coloring(); // Se llamó a la función que asigna los colores.
-                InvokeRepeating("ZombieMove", 5.0f, 5.0f); // Se utilizó una función de repetición para el movimiento de los zombies.
+                InvokeRepeating("ZombieMove", 3.0f, 3.0f); // Se utilizó una función de repetición para el movimiento de los zombies.
                 transform.tag = "Zombie"; // Se cambió el nombre de la etiqueta.
             }
 
@@ -47,8 +47,15 @@ namespace NPC
 
                 else if (move == "Idle")
                 {
-                    //No hace nada, está idle xd ¿qué esperabas?
+                    // ...
                 }
+
+                else if (move == "Rotating")
+                {                    
+                    transform.rotation = Quaternion.Euler(0.0f, Random.Range(-360.0f, 360.0f), 0.0f);
+                }
+
+                
             }
 
             public Move zM;
@@ -83,6 +90,11 @@ namespace NPC
                     case 4:
                         zM = Move.Idle;
                         move = "Idle";
+                        break;
+
+                    case 5:
+                        zM = Move.Rotating;
+                        move = "Rotating";
                         break;
                 }
 
@@ -151,7 +163,8 @@ namespace NPC
         public enum Move // Enum del movimiento
         {
             Idle,
-            Moving
+            Moving,
+            Rotating
         }
 
         public enum ZombieColor // Enum de los colores

@@ -28,8 +28,7 @@ public class Hero : MonoBehaviour
 
         pov.transform.SetParent(this.transform);
         pov.transform.localPosition = Vector3.zero;
-
-        Debug.Log(mySpeed);
+                
     }
 
     //Rotación en Y.
