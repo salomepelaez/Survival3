@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NPC;
 
 public class Hero : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Hero : MonoBehaviour
    
 
     void Start()
-    {
+    {        
         float mySpeed = Random.Range(0.1f, 0.2f);
 
         new Speed(mySpeed);
@@ -45,12 +46,12 @@ public class Hero : MonoBehaviour
         if (collision.transform.tag == "Villager")
         {
 
-            collision.transform.GetComponent<Villagers>().PrintNames();
+            collision.transform.GetComponent<NPC.Ally.Villagers>().PrintNames();
         }
 
         if (collision.transform.tag == "Zombie")
         {
-            collision.transform.GetComponent<Zombie>().PrintMessages();
+            collision.transform.GetComponent<NPC.Enemy.Zombie>().PrintMessages();
 
         }
     }
