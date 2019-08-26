@@ -16,6 +16,7 @@ public class Hero : MonoBehaviour
 
     void Start()
     {
+        transform.name = "Hero";
         // Vector3 que almacena la posición, las otras dos variables la asignan de manera aleatoria en los ejes X y Z.
         Vector3 posicion = new Vector3();
         posicion.x = Random.Range(-30, 30);
@@ -68,5 +69,5 @@ public class Hero : MonoBehaviour
 
 public struct HeroData // Este Struct almacena las variables, además de una función que asigna la velocidad aleatoria del héroe.
 {
-    public float mySpeed;
+    public static float sHero;
 }

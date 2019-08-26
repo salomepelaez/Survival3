@@ -14,6 +14,7 @@ namespace NPC
             void Start()
             {
                 transform.tag = "Villager"; // El cambiar el nombre de la etiqueta, permite encontrar de manera sencilla el objeto con el que se colisiona.
+                transform.name = "Villager";
 
                 GetComponent<Renderer>().material.color = Color.yellow; // Se añadió el color amarillo a los aldeanos para poder distinguirlos de los zombies.
 
@@ -22,6 +23,19 @@ namespace NPC
 
                 villagersData.age = Random.Range(15, 101);
                 villagersData.peopleNames = (Names)Random.Range(0, 20);
+
+                // *~*~* Canvas *~*~* //
+
+                GameObject myGO;
+                GameObject myText;
+                Canvas myCanvas;
+
+                myGO = new GameObject();
+                myGO.name = "ZombieCanvas";
+                myGO.AddComponent<Canvas>();
+                myCanvas = myGO.GetComponent<Canvas>();
+
+                    
             }
 
             public void PrintNames() // Esta función es la encargada de imprimir los mensajes con las variables de los Enums.
@@ -39,7 +53,7 @@ namespace NPC
             Catrina,
             Dean,
             Will,
-            Lucas,
+            Lucas, 
             Dustin,
             Mike,
             Sophie,

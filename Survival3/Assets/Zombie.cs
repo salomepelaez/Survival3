@@ -17,6 +17,7 @@ namespace NPC
                 Coloring(); // Se llamó a la función que asigna los colores.
                 InvokeRepeating("ZombieMove", 3.0f, 3.0f); // Se utilizó una función de repetición para el movimiento de los zombies.
                 transform.tag = "Zombie"; // Se cambió el nombre de la etiqueta.
+                transform.name = "Zombie";
             }
 
 
@@ -51,8 +52,9 @@ namespace NPC
                 }
 
                 else if (move == "Rotating")
-                {                    
-                    transform.rotation = Quaternion.Euler(0.0f, Random.Range(-360.0f, 360.0f), 0.0f);
+                {     
+                    
+                    transform.Rotate(Vector3.up * zombieSpeed * Time.deltaTime);
                 }
 
                 
