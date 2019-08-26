@@ -6,9 +6,13 @@ public class Hero : MonoBehaviour
 {
     HeroData hs; // Se creó una variable del Struct.
     GameObject pov; // Se creó un GameObject al que se le asignarán los componentes de la cámara. (pov: point of view)
+   
 
     void Start()
     {
+        float mySpeed = Random.Range(0.1f, 0.2f);
+
+        new Speed(mySpeed);
         // Vector3 que almacena la posición, las otras dos variables la asignan de manera aleatoria en los ejes X y Z.
         Vector3 posicion = new Vector3();
         posicion.x = Random.Range(-30, 30);
@@ -19,11 +23,12 @@ public class Hero : MonoBehaviour
         pov.AddComponent<Camera>();
         pov.AddComponent<HeroAim>();
         gameObject.AddComponent<HeroMove>();
-        gameObject.GetComponent<HeroMove>().speed = hs.RandomSpeed(); // Se utilizaron los miembros del Enum "Speed", y se reasigna la velocidad.
+        gameObject.GetComponent<HeroMove>().speed = mySpeed; // Se utilizaron los miembros del Enum "Speed", y se reasigna la velocidad.
 
         pov.transform.SetParent(this.transform);
         pov.transform.localPosition = Vector3.zero;
 
+        Debug.Log(mySpeed);
     }
 
     //Rotación en Y.
@@ -51,52 +56,17 @@ public class Hero : MonoBehaviour
     }
 }
 
-public struct HeroData // Este Struct almacena las variables, además de una función que asigna la velocidad aleatoria del héroe.
+public class Speed
 {
-    public Speed mySpeed;
-    public float theSpeed;
+    float mySpeed = Random.Range(0.1f, 0.2f);
 
-    public float RandomSpeed() // Se asignaron 3 velocidades: lento, normal y veloz, de las cuales se escogerá una aleatoriamente.
+    public Speed(float theSpeed)
     {
-
-        int x = Random.Range(0, 3);
-
-        switch (x)
-        {
-            case 0:
-                mySpeed = Speed.Low;
-                break;
-
-            case 1:
-                mySpeed = Speed.Medium;
-                break;
-
-            case 2:
-                mySpeed = Speed.Fast;
-                break;
-        }
-
-        if (mySpeed == Speed.Low)
-        {
-            theSpeed = 0.05f;
-        }
-
-        else if (mySpeed == Speed.Medium)
-        {
-            theSpeed = 0.1f;
-        }
-
-        else if (mySpeed == Speed.Fast)
-        {
-            theSpeed = 0.2f;
-        }
-        return theSpeed;
+        this.mySpeed = theSpeed;
     }
 }
 
-public enum Speed // Este Enum almacena las 3 velocidades antes mencionadas.
+public struct HeroData // Este Struct almacena las variables, además de una función que asigna la velocidad aleatoria del héroe.
 {
-    Low,
-    Medium,
-    Fast
+    public float mySpeed;
 }
