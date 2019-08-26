@@ -16,8 +16,6 @@ public class Hero : MonoBehaviour
 
     void Start()
     {
-        float mySpeed = Random.Range(0.1f, 0.2f);
-
         // Vector3 que almacena la posición, las otras dos variables la asignan de manera aleatoria en los ejes X y Z.
         Vector3 posicion = new Vector3();
         posicion.x = Random.Range(-30, 30);
@@ -28,7 +26,7 @@ public class Hero : MonoBehaviour
         pov.AddComponent<Camera>();
         pov.AddComponent<HeroAim>();
         gameObject.AddComponent<HeroMove>();
-        gameObject.GetComponent<HeroMove>().speed = mySpeed; // Se utilizaron los miembros del Enum "Speed", y se reasigna la velocidad.
+        gameObject.GetComponent<HeroMove>().speed = sHero; // Se utilizaron los miembros del Enum "Speed", y se reasigna la velocidad.
 
         pov.transform.SetParent(this.transform);
         pov.transform.localPosition = Vector3.zero;
