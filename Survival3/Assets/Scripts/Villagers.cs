@@ -24,16 +24,7 @@ namespace NPC
                 villagersData.age = Random.Range(15, 101);
                 villagersData.peopleNames = (Names)Random.Range(0, 20);
 
-                // *~*~* Canvas *~*~* //
-
-                GameObject myGO;
-                GameObject myText;
-                Canvas myCanvas;
-
-                myGO = new GameObject();
-                myGO.name = "ZombieCanvas";
-                myGO.AddComponent<Canvas>();
-                myCanvas = myGO.GetComponent<Canvas>();
+                
 
                     
             }

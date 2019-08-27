@@ -1,24 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NPC
 {
     public class Manager : MonoBehaviour
     {
         public const int maxGen = 25;
-        public static int minGen;
-
-        private void Awake()
-        {
-            minGen = Random.Range(5, 15);
-        }
+        public readonly int minGen;
 
         void Start()
         {            
             int rnd = Random.Range(minGen, maxGen);
             for (int j = 0; j < rnd; j++)
-            {               
+            {
+                new Generator(minGen);
                 GameObject thePeople = GameObject.CreatePrimitive(PrimitiveType.Cube); // El GameObject "thePeople" genera los cubos para zombies, aldeanos y héroes.
 
                 // El Vector3 de posición es el que servirá para generar los cubos en una posición aleatoria.
@@ -52,6 +49,18 @@ namespace NPC
                 }
             }
         }
+
+        
     }   
+
+    public class Generator
+    {
+        int minGen = Random.Range(5, 15);
+        public Generator(int g)
+        {
+            this.minGen = g;
+            minGen = Random.Range(5, 15);
+        }
+    }
 }
 
