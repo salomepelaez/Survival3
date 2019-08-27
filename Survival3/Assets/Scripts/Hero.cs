@@ -7,13 +7,8 @@ public class Hero : MonoBehaviour
 {
     HeroData hs; // Se creó una variable del Struct.
     GameObject pov; // Se creó un GameObject al que se le asignarán los componentes de la cámara. (pov: point of view)
-    public static float sHero;
-
-    private void Awake()
-    {
-        sHero = Random.Range(0.1f, 0.2f);
-    }
-
+    public readonly float sHero = Manager.sHero;
+    
     void Start()
     {
         transform.name = "Hero";
@@ -61,10 +56,6 @@ public class Hero : MonoBehaviour
 
     static float speed;
 
-    public Hero ()
-    {
-        speed = sHero;
-    }    
 }
 
 public struct HeroData // Este Struct almacena las variables, además de una función que asigna la velocidad aleatoria del héroe.

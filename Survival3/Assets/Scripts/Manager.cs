@@ -10,12 +10,19 @@ namespace NPC
         public const int maxGen = 25;
         public readonly int minGen;
 
+        public static float sHero;
+
+        public void Awake()
+        {
+            sHero = Random.Range(0.1f, 0.2f);
+        }
+
         void Start()
         {            
             int rnd = Random.Range(minGen, maxGen);
             for (int j = 0; j < rnd; j++)
             {
-                new Generator(minGen);
+                new minGenerator(minGen);
                 GameObject thePeople = GameObject.CreatePrimitive(PrimitiveType.Cube); // El GameObject "thePeople" genera los cubos para zombies, aldeanos y héroes.
 
                 // El Vector3 de posición es el que servirá para generar los cubos en una posición aleatoria.
@@ -53,10 +60,10 @@ namespace NPC
         
     }   
 
-    public class Generator
+    public class minGenerator
     {
         int minGen = Random.Range(5, 15);
-        public Generator(int g)
+        public minGenerator(int g)
         {
             this.minGen = g;
             minGen = Random.Range(5, 15);
