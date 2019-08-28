@@ -21,6 +21,7 @@ public class HeroAim : MonoBehaviour
         {
             mouseY += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
         }
+
         else
         {
             mouseY -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
@@ -36,7 +37,6 @@ public class HeroAim : MonoBehaviour
         {
             axisLimit = 90.0f;
             mouseY = 90.0f;
-
         }
 
         else if (axisLimit < -90.0f)

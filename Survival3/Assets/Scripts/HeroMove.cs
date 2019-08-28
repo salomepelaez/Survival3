@@ -14,7 +14,6 @@ public class HeroMove : MonoBehaviour
 
     private void Move() // Se creó una función para el movimiento, que luego es llamada en el Update.
     {
-
         /* El siguiente bloque de código, es el encargado de obtener de obtener las teclas que el jugador presiona, 
         y transformar la ubicación dependiendo de la dirección que se le haya asignado*/
         if (Input.GetKey(KeyCode.W))
@@ -38,9 +37,5 @@ public class HeroMove : MonoBehaviour
             transform.position -= transform.right * speed; /* Como sucede con la tecla S, no hay una opción que permita ir hacia la izquierda, por lo que es necesario
             utilizar un signo negativo para ir hacia la dirección contraria*/
         }
-
-
-
     }
-
 }

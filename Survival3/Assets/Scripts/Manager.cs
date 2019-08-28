@@ -2,29 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+// Se importaron los Namespace para poder utilizar sus componentes.
 using NPC.Enemy;
 using NPC.Ally;
 
 
 public class Manager : MonoBehaviour
 {
-    public const int maxGen = 25;
-    public readonly int minGen;
+    public const int maxGen = 25; // Se creó una variable constante para el número máximo de generación.
+    public readonly int minGen; // Se declaró un readonly para el mínimo posible de generación de objetos. 
 
+    // Las siguientes variables del tipo texto son las que abrigan los contadores del Canvas.
     public Text ZombiesNum;
     public Text VillagersNum;
 
-    public static float sHero;
+    public static float sHero; // En esta línea se declara la velocidad estática del héroe, que luego se utiliza en la clase Hero.
 
-    public void Awake()
+    public void Awake() // A continuación se asigna la velocidad mencionada del héroe.
     {
         sHero = Random.Range(0.1f, 0.2f);
     }
 
     void Start()
     {            
-        int rnd = Random.Range(minGen, maxGen);
-        for (int j = 0; j < rnd; j++)
+        int rnd = Random.Range(minGen, maxGen); // La generación es producida entre el mínimo de objetos y el máximo.
+
+        for (int j = 0; j < rnd; j++) // Este For genera los objetos siguiendo los límites establecidos.
         {
             new minGenerator(minGen);
             GameObject thePeople = GameObject.CreatePrimitive(PrimitiveType.Cube); // El GameObject "thePeople" genera los cubos para zombies, aldeanos y héroes.
@@ -58,7 +61,8 @@ public class Manager : MonoBehaviour
                         break;
                 }
             }
-
+            
+            // El siguiente bloque de código genera los contadores de NPC´s en la escena.
             int v = 0;
             int z = 0;
                 
@@ -75,9 +79,9 @@ public class Manager : MonoBehaviour
             }
         }
     }
-
 }   
 
+// Quise hacer una clase diferente para utilizarla como constructor, en este se establece el readonly.
 public class minGenerator
 {
     int minGen = Random.Range(5, 15);

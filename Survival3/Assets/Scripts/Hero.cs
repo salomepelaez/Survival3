@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NPC;
+// Se importaron los Namespace para poder utilizar sus componentes.
+using NPC.Enemy;
+using NPC.Ally;
 
 public class Hero : MonoBehaviour
 {
     HeroData hs; // Se creó una variable del Struct.
     GameObject pov; // Se creó un GameObject al que se le asignarán los componentes de la cámara. (pov: point of view)
-    public readonly float sHero = Manager.sHero;
+    public readonly float sHero = Manager.sHero; // La variable se asignó como readonly, obteniéndola desde la clase Manager.
     
     void Start()
     {
-        transform.name = "Hero";
+        transform.name = "Hero"; // Se transformó su nombre para identificarlo más rápidamente.
         // Vector3 que almacena la posición, las otras dos variables la asignan de manera aleatoria en los ejes X y Z.
         Vector3 posicion = new Vector3();
         posicion.x = Random.Range(-30, 30);
@@ -25,9 +27,7 @@ public class Hero : MonoBehaviour
         gameObject.GetComponent<HeroMove>().speed = sHero; // Se utilizaron los miembros del Enum "Speed", y se reasigna la velocidad.
 
         pov.transform.SetParent(this.transform);
-        pov.transform.localPosition = Vector3.zero;
-
-        Debug.Log(sHero);
+        pov.transform.localPosition = Vector3.zero;               
     }
 
     //Rotación en Y.
@@ -43,22 +43,19 @@ public class Hero : MonoBehaviour
     {
         if (collision.transform.tag == "Villager")
         {
-
-            collision.transform.GetComponent<NPC.Ally.Villagers>().PrintNames();
+            collision.transform.GetComponent<Villagers>().PrintNames();
         }
 
         if (collision.transform.tag == "Zombie")
         {
-            collision.transform.GetComponent<NPC.Enemy.Zombie>().PrintMessages();
-
+            collision.transform.GetComponent<Zombie>().PrintMessages();
         }
     }
 
-    static float speed;
-
+    static float speed; // La velocidad se declaró como estática.
 }
 
-public struct HeroData // Este Struct almacena las variables, además de una función que asigna la velocidad aleatoria del héroe.
+public struct HeroData // Este Struct almacena las variables.
 {
     public static float sHero;
 }

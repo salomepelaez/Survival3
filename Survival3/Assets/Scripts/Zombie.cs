@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// Se importó el Namespace para poder utilizar sus componentes.
 using NPC;
 
-namespace NPC
+namespace NPC // Este Namespace abriga los otros dos correspondientes: Ally and Enemy
 {
-    namespace Enemy
+    namespace Enemy // Este es el namespace anidado
     {
         public class Zombie : MonoBehaviour
         {
@@ -17,9 +18,8 @@ namespace NPC
                 Coloring(); // Se llamó a la función que asigna los colores.
                 InvokeRepeating("ZombieMove", 3.0f, 3.0f); // Se utilizó una función de repetición para el movimiento de los zombies.
                 transform.tag = "Zombie"; // Se cambió el nombre de la etiqueta.
-                transform.name = "Zombie";
+                transform.name = "Zombie"; // Se cambió el nombre del objeto para poder identificarlo fácilmente.
             }
-
 
             // En el Update se asignaron las posibilidades de movimiento, basándose en una función creada unas líneas más abajo.
             public void Update()
@@ -56,8 +56,6 @@ namespace NPC
                     
                     transform.Rotate(Vector3.up * zombieSpeed * Time.deltaTime);
                 }
-
-                
             }
 
             public Move zM;
@@ -99,8 +97,6 @@ namespace NPC
                         move = "Rotating";
                         break;
                 }
-
-
             }
 
             public void PrintMessages() // Esta función se encarga de generar los mensajes, utilizando los miembros del Enum.
