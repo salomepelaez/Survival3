@@ -24,26 +24,27 @@ namespace NPC // Este Namespace abriga los otros dos correspondientes: Ally and 
             // En el Update se asignaron las posibilidades de movimiento, basándose en una función creada unas líneas más abajo.
             public void Update()
             {
-                float zombieSpeed = 0.1f; // Se creó una variable para la velocidad de los zombies.
+                float zombieSpeed = 0.3f; // Se creó una variable para la velocidad de los zombies.
+                float rotationSpeed = 25f; // Se creó una variable mucho mayor que la velocidad general del zombie, para que su rotación pueda ser visible.
 
                 if (move == "Forwards")
                 {
-                    transform.position += transform.forward * zombieSpeed;
+                    transform.position += transform.forward * zombieSpeed * Time.deltaTime;
                 }
 
                 else if (move == "Backwards")
                 {
-                    transform.position -= transform.forward * zombieSpeed;
+                    transform.position -= transform.forward * zombieSpeed * Time.deltaTime;
                 }
 
                 else if (move == "Right")
                 {
-                    transform.position += transform.right * zombieSpeed;
+                    transform.position += transform.right * zombieSpeed * Time.deltaTime;
                 }
 
                 else if (move == "Left")
                 {
-                    transform.position -= transform.right * zombieSpeed;
+                    transform.position -= transform.right * zombieSpeed * Time.deltaTime;
                 }
 
                 else if (move == "Idle")
@@ -52,9 +53,8 @@ namespace NPC // Este Namespace abriga los otros dos correspondientes: Ally and 
                 }
 
                 else if (move == "Rotating")
-                {     
-                    
-                    transform.Rotate(Vector3.up * zombieSpeed * Time.deltaTime);
+                {   
+                    transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
                 }
             }
 
