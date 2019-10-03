@@ -18,18 +18,21 @@ public class Manager : MonoBehaviour
 
     public static float sHero; // En esta línea se declara la velocidad estática del héroe, que luego se utiliza en la clase Hero.
 
-    public void Awake() // A continuación se asigna la velocidad mencionada del héroe.
+    System.Random random = new System.Random();
+
+    public Manager()
     {
-        sHero = Random.Range(0.1f, 0.2f);
+        minGen = random.Next(5, 15);
     }
 
-    void Start()
-    {            
+    void Awake()
+    {
+        sHero = Random.Range(0.1f, 0.2f);
+
         int rnd = Random.Range(minGen, maxGen); // La generación es producida entre el mínimo de objetos y el máximo.
 
         for (int j = 0; j < rnd; j++) // Este For genera los objetos siguiendo los límites establecidos.
         {
-            new minGenerator(minGen);
             GameObject thePeople = GameObject.CreatePrimitive(PrimitiveType.Cube); // El GameObject "thePeople" genera los cubos para zombies, aldeanos y héroes.
 
             // El Vector3 de posición es el que servirá para generar los cubos en una posición aleatoria.
@@ -81,14 +84,4 @@ public class Manager : MonoBehaviour
     }
 }   
 
-// Quise hacer una clase diferente para utilizarla como constructor, en este se establece el readonly.
-public class minGenerator
-{
-    int minGen = Random.Range(5, 15);
-    public minGenerator(int g)
-    {
-        this.minGen = g;
-        minGen = Random.Range(5, 15);
-    }
-}
 
